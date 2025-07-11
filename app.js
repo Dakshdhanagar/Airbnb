@@ -1,3 +1,8 @@
+if(process.env.NODE_ENV !="production"){
+    require("dotenv").config();
+}
+require('dotenv').config();
+
 const express=require("express");
 const app=express();
 const mongoose=require("mongoose");
@@ -14,6 +19,7 @@ const passport=require("passport");
 const LocalStrategy=require("passport-local");
 const User=require("./models/user.js");
 
+
 const listingsRouter=require("./routes/listing.js");
 const reviewsRouter=require("./routes/review.js");
 const userRouter=require("./routes/user.js");
@@ -27,8 +33,6 @@ main().then(()=>{
 async function main() {
   await mongoose.connect(MONGO_URL);
 }
-
-
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
@@ -50,9 +54,9 @@ const sessionOptions={
     }
 };
 
-app.get("/",(req,res)=>{
-    res.send("root working");
-});
+// app.get("/",(req,res)=>{
+//     res.send("root working");
+// });
 
 app.use(session(sessionOptions));
 app.use(flash());

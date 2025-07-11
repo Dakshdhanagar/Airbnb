@@ -13,10 +13,8 @@ const listingSchema=new Schema({
     },
     description:String,
     image: {
-        type:String,
-        default:
-            "https://www.travelbelize.org/email-segmentation/default",
-        set:(v)=>v===""?"https://www.travelbelize.org/email-segmentation/default":v ,
+        url:String,
+        filename:String,
     },
     price:Number,
     location:String,
